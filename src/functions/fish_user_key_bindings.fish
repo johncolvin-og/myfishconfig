@@ -26,4 +26,6 @@ bind -M insert \ch backward-char
 bind -M insert \cH backward-bigword
 set -x LS_COLORS "$LS_COLORS:di=38;5;141;48;5;234:fi=94:*.h=38;5;039:*.cpp=38;5;024:*.py=38;5;041:*.txt=38;5;251"
 set PATH $PATH /home/john/.tools/
+bind -M default \cv 'set fish_bind_mode default'
+bind -M default \e 'set fish_bind_mode default'
 
