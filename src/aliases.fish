@@ -16,6 +16,11 @@ function la
    ls -Ah $argv
 end
 
+function tmux
+   command tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf
+   set -g TERM screen-256color
+end
+
 function lt
    ls -lhtF $argv
 end
