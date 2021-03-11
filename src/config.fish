@@ -19,6 +19,10 @@ set -g theme_display_user fish-shell
 set -g theme_nerd_fonts yes
 set -g theme_powerline_fonts no
 
+# Custom environment variables
+set -g REPO_HOME $HOME/repos 
+set -g REPO_PUBLIC $REPO_HOME/public
+
 set PATH $PATH /home/john/.tools
 
 # >>> conda initialize >>>
