@@ -26,6 +26,12 @@ set -g theme_display_user fish-shell
 set -g theme_nerd_fonts yes
 set -g theme_powerline_fonts no
 
+set -g left_pwd_style short
+set -g budspencer_pwdstyle git none none
+set -g budspencer_display_user
+
+source $fish_config_home/functions/budspencer_profiles.fish
+set_profile_pastel_titan
 
 set PATH $PATH /home/john/.tools
 
