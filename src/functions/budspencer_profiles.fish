@@ -24,6 +24,12 @@ function set_profile_pastel_titan
    set -U my_prompt_wd_bg $my_dark_gray2
 end
 
+function set_profile_green_titan
+   set_profile_pastel_titan
+   set -U my_prompt_wd_fg $my_pea_green
+   set -U my_prompt_symbols_fg $my_pea_green
+end
+
 function set_profile_yellow_spartan
    set_profile_pastel_titan
    set -U my_prompt_wd_fg $my_dirty_mustard_yellow
