@@ -45,8 +45,9 @@ set -U my_semi_light_gray 999999
 set -U my_semi_light_gray2 9E9E9E
 set -U my_light_gray A8A8A8
 set -U my_pastel_blue 5084FF
-set -U my_pastel_yellow CCCC00
 set -U my_pastel_purple B27AFF
+set -U my_pastel_yellow CCCC00
+set -U my_dirty_mustard_yellow 929222
 set -U my_hotdog_mustard_yellow B2B200
 set -U my_pea_green 55AA55
 set -U my_dark_pea_green 429542
