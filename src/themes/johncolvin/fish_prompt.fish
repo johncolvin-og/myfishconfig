@@ -831,7 +831,7 @@ function __budspencer_prompt_left_symbols -d 'Display symbols'
             set symbols_urgent T
         end
     end
-    set symbols $symbols(set_color $my_prompt_symbols_bg)' '(set_color normal)(set_color $my_pastel_blue)
+    set symbols $symbols(set_color $my_prompt_symbols_bg)' '(set_color normal)(set_color $my_prompt_symbols_fg)
     switch $pwd_style
         case none
             if test $symbols_urgent = T
