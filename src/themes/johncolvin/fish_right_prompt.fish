@@ -40,6 +40,16 @@ end
 
 source (realpath (dirname (status -f)))"/agnoster_fish_right_prompt.fish"
 source (realpath (dirname (status -f)))"/batman_fish_right_prompt.fish"
+source (realpath (dirname (status -f)))"/functions/__budspencer_prompt_git_branch_right.fish"
+source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_ahead_or_behind.fish"
+source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_stashed.fish"
+source (realpath (dirname (status -f)))"/functions/__budspencer_git_status.fish"
+
+source (realpath (dirname (status -f)))"/functions/__batman_color_dim.fish"
+source (realpath (dirname (status -f)))"/functions/__batman_color_fst.fish"
+source (realpath (dirname (status -f)))"/functions/__batman_color_off.fish"
+source (realpath (dirname (status -f)))"/functions/__batman_color_snd.fish"
+source (realpath (dirname (status -f)))"/functions/__batman_color_trd.fish"
 ###############################################################################
 # => Functions
 ###############################################################################
@@ -104,32 +114,6 @@ function __budspencer_cmd_duration -d 'Displays the elapsed time of last command
   end
 end
 
-################
-# => Git segment
-################
-function __budspencer_is_git_ahead_or_behind -d 'Check if there are unpulled or unpushed commits'
-  if set -l ahead_or_behind (command git rev-list --count --left-right 'HEAD...@{upstream}' 2> /dev/null)
-    echo $ahead_or_behind | sed 's|\s\+|\n|g'
-  else
-    echo 0\n0
-  end
-end
-
-function __budspencer_git_status -d 'Check git status'
-  set -l git_status (command git status --porcelain 2> /dev/null | cut -c 1-2)
-  set -l added (echo -sn $git_status\n | egrep -c "[ACDMT][ MT]|[ACMT]D")
-  set -l deleted (echo -sn $git_status\n | egrep -c "[ ACMRT]D")
-  set -l modified (echo -sn $git_status\n | egrep -c ".[MT]")
-  set -l renamed (echo -sn $git_status\n | egrep -c "R.")
-  set -l unmerged (echo -sn $git_status\n | egrep -c "AA|DD|U.|.U")
-  set -l untracked (echo -sn $git_status\n | egrep -c "\?\?")
-  echo -n $added\n$deleted\n$modified\n$renamed\n$unmerged\n$untracked
-end
-
-function __budspencer_is_git_stashed -d 'Check if there are stashed commits'
-  command git log --format="%gd" -g $argv 'refs/stash' -- 2> /dev/null | wc -l | tr -d '[:space:]'
-end
-
 function __budspencer_prompt_git_symbols -d 'Displays the git symbols'
   set -l is_repo (command git rev-parse --is-inside-work-tree 2> /dev/null)
   if [ -z $is_repo ]
@@ -142,10 +126,11 @@ function __budspencer_prompt_git_symbols -d 'Displays the git symbols'
 
   if [ (expr $git_ahead_behind[1] + $git_ahead_behind[2] + $git_status[1] + $git_status[2] + $git_status[3] + $git_status[4] + $git_status[5] + $git_status[6] + $git_stashed) -ne 0 ]
     set_color $budspencer_colors[3]
+    # set_color $my_prompt_symbols_fg
     echo -n ''
     set_color -b $budspencer_colors[3]
     switch $pwd_style
-      case long short
+      case long short git
         if [ $symbols_style = 'symbols' ]
           if [ $git_ahead_behind[1] -gt 0 ]
             set_color -o $budspencer_colors[5]
@@ -227,41 +212,6 @@ function __budspencer_prompt_git_symbols -d 'Displays the git symbols'
   end
 end
 
-################
-# => PWD segment
-################
-function __budspencer_prompt_pwd -d 'Displays the present working directory'
-  set -l user_host ' '
-  if set -q SSH_CLIENT
-    if [ $symbols_style = 'symbols' ]
-      switch $pwd_style
-        case short
-          set user_host " $USER@"(hostname -s)':'
-        case long
-          set user_host " $USER@"(hostname -f)':'
-      end
-    else
-      set user_host " $USER@"(hostname -i)':'
-    end
-  end
-  set_color $budspencer_current_bindmode_color
-  echo -n ''
-  set_color normal
-  set_color -b $budspencer_current_bindmode_color $budspencer_colors[1]
-  if [ (count $budspencer_prompt_error) != 1 ]
-    switch $pwd_style
-      case short
-        echo -n $user_host(prompt_pwd)' '
-      case long
-        echo -n $user_host(pwd)' '
-    end
-  else
-    echo -n " $budspencer_prompt_error "
-    set -e budspencer_prompt_error[1]
-  end
-  set_color normal
-end
-
 ###############################################################################
 # => Prompt
 ###############################################################################
@@ -269,6 +219,28 @@ end
 function fish_right_prompt -d 'Write out the right prompt of the budspencer theme'
    echo -n -s (__budspencer_cmd_duration) (__budspencer_prompt_git_symbols)
    prompt_vi_mode
-   batman_fish_right_prompt
-  set_color normal
+   # batman_fish_right_prompt
+   __budspencer_prompt_git_branch_right
+   set my_prompt_clock_fg $my_light_gray
+   set my_prompt_clock_bg $my_dark_gray
+   set_color -o $my_prompt_clock_fg
+   set_color -b $my_prompt_clock_bg
+   # echo -n " "(date +%H:%M:%S)
+
+  # set_color -o $my_prompt_grad1_fg[1]
+  # set_color -b $my_prompt_grad1_bg[1]
+  echo -n ' '
+  set i 1
+  # set my_prompt_right_grad1_fg $my_prompt_grad1_fg
+  # set my_prompt_right_grad1_bg $my_prompt_grad1_bg
+  # set my_prompt_right_grad1_symbol $my_prompt_grad1_symbol
+  for grad_fg in $my_prompt_right_grad1_fg
+    set_color -b $my_prompt_right_grad1_bg[$i]
+    set_color -o $grad_fg
+    echo -n $my_prompt_right_grad1_symbol[$i]
+    set i (math $i + 1)
+  end
+  echo -n ' '
+   printf (__batman_color_dim)(date +%H(__batman_color_fst):(__batman_color_dim)%M(__batman_color_fst):(__batman_color_dim)%S)(__batman_color_off)
+   set_color normal
 end

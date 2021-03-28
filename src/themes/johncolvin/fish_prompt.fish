@@ -639,50 +639,6 @@ function __budspencer_prompt_node_version -d 'Return the current Node version'
     end
 end
 
-################
-# => Git segment
-################
-function __budspencer_prompt_git_branch -d 'Return the current branch name'
-    set -l branch (command git symbolic-ref HEAD 2> /dev/null | sed -e 's|^refs/heads/||')
-    if not test $branch >/dev/null
-        set -l position (command git describe --contains --all HEAD 2> /dev/null)
-        if not test $position >/dev/null
-            set -l commit (command git rev-parse HEAD 2> /dev/null | sed 's|\(^.......\).*|\1|')
-            if test $commit
-                set_color -b $budspencer_colors[11]
-                switch $pwd_style
-                    case short long git
-                        echo -n ''(set_color $budspencer_colors[1])' ➦ '$commit' '(set_color $budspencer_colors[11])
-                    case none
-                        echo -n ''
-                end
-                set_color normal
-                set_color $budspencer_colors[11]
-            end
-        else
-            set_color -b $budspencer_colors[9]
-            switch $pwd_style
-                case short long git
-                    echo -n ''(set_color $budspencer_colors[1])'  '$position' '(set_color $budspencer_colors[9])
-                case none
-                    echo -n ''
-            end
-            set_color normal
-            set_color $budspencer_colors[9]
-        end
-    else
-        set_color -b $budspencer_colors[3]
-        switch $pwd_style
-            case short long git
-                echo -n ''(set_color $budspencer_colors[1])'  '$branch' '(set_color $budspencer_colors[3])
-            case none
-                echo -n ''
-        end
-        set_color normal
-        set_color $budspencer_colors[3]
-    end
-end
-
 ######################
 # => Bind-mode segment
 ######################
@@ -914,10 +870,6 @@ set -x LOGIN $USER
 # => Left prompt
 ###############################################################################
 
-function __lingodee -d Bling
-    echo -n ' Marklar '
-end
-
 if not set -q left_pwd_style
     set -g left_pwd_style short
 end
@@ -1011,5 +963,5 @@ end
 
 function fish_prompt -d 'Write out the left prompt of the budspencer theme'
     set -g last_status $status
-    echo -n -s (__budspencer_prompt_bindmode) (__budspencer_prompt_virtual_env) (__budspencer_prompt_node_version) (__budspencer_pwd) (__budspencer_prompt_git_branch) (__budspencer_prompt_left_symbols) ' ' (set_color normal)
+    echo -n -s (__budspencer_prompt_bindmode) (__budspencer_prompt_virtual_env) (__budspencer_prompt_node_version) (__budspencer_pwd) (__budspencer_prompt_left_symbols) ' ' (set_color normal)
 end
