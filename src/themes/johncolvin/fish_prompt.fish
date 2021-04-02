@@ -913,7 +913,7 @@ function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the
   for grad_fg in $my_prompt_grad1_fg
     set_color -b $my_prompt_grad1_bg[$i]
     set_color -o $grad_fg
-    echo -n $my_prompt_grad1_symbol[$i]
+    echo -n -e $my_prompt_grad1_symbol[$i]
     set i (math $i + 1)
   end
 
