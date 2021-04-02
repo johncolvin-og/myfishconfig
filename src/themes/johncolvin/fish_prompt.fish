@@ -917,7 +917,6 @@ function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the
     set i (math $i + 1)
   end
 
-  echo -n ' '
   set_color -b $my_prompt_wd_bg
   echo -n ' '
   set_color -o $my_prompt_wd_fg
