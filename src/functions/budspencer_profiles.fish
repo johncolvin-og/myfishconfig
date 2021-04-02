@@ -28,6 +28,20 @@ function set_profile_pastel_titan
    set -U my_prompt_wd_bg $my_dark_gray2
 end
 
+function set_profile_linguine
+   set_profile_pastel_titan
+   set -U my_prompt_right_grad1_symbol '\e[3m  ' ' ' ' \e[23m'
+   set -U my_prompt_right_grad1_fg $my_orange $my_baby_blue $my_pale_green
+end
+
+function set_profile_linguine_fade
+   set_profile_pastel_titan
+   set -U my_prompt_right_grad1_symbol '\e[3m  ' ' ' ' \e[23m'
+   set -U my_prompt_grad1_symbol ' ' '\e[3m  \e[23m'
+   set -U my_prompt_grad1_fg $my_dark_tan $my_dark_tan
+   set -U my_prompt_grad1_bg $my_dark_tan $my_dark_gray2
+end
+
 function set_profile_green_titan
    set_profile_pastel_titan
    set -U my_prompt_wd_fg $my_pea_green
