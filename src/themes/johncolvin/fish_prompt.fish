@@ -45,14 +45,31 @@ set -U my_semi_light_gray 999999
 set -U my_semi_light_gray2 9E9E9E
 set -U my_light_gray A8A8A8
 set -U my_pastel_blue 5084FF
+set -U my_baby_blue 77B1FF
 set -U my_pastel_purple B27AFF
 set -U my_pastel_yellow CCCC00
 set -U my_dirty_mustard_yellow 929222
 set -U my_hotdog_mustard_yellow B2B200
+set -U my_off_yellow AA9944
+set -U my_pale_green 99FFAA
 set -U my_pea_green 55AA55
 set -U my_dark_pea_green 429542
 set -U my_granny_smith_green 88FF88
 set -U my_off_white D8D8D8
+set -U my_orange FF8822
+set -U my_turqoise 228888
+set -U my_dirty_orange AA7744
+set -U my_dark_peach AA5744
+set -U my_gold FFAA55
+set -U my_dark_oranage BB6C00
+set -U my_olive_tan 996C33
+set -U my_mud_brown 795C26
+set -U my_dry_mud_brown 7E6036
+set -U my_yellow_tan A28238
+set -U my_tan 907036
+set -U my_dark_tan 80602B
+set -U my_orange_tan 907036
+set -U my_light_tan A27070
 
 # Budspencer colors
 set -U budspencer_night 000000 083743 445659 fdf6e3 b58900 cb4b16 dc121f af005f 6c71c4 268bd2 2aa198 859900
