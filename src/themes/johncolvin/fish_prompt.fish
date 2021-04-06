@@ -84,6 +84,18 @@ if not set -q budspencer_colors
     set -U budspencer_colors $budspencer_night
 end
 
+# Prompt specific default colors (custom)
+# set -U my_prompt_venv_bg $budspencer_colors[9]
+set -U my_prompt_venv_bg $my_dark_gray
+set -U my_prompt_venv_grad1_fg $my_pastel_blue
+set -U my_prompt_venv_grad1_bg $my_dark_gray
+set -U my_prompt_venv_fg $my_pale_green
+set -U my_prompt_venv_grad1_symbol ''
+
+set -U my_prompt_venv_grad2_fg $my_pastel_blue
+set -U my_prompt_venv_grad2_bg $my_dark_gray
+set -U my_prompt_venv_grad2_symbol '\e[3m\e[23m '
+
 # Cursor color changes according to vi-mode
 # Define values for: normal_mode insert_mode visual_mode
 set -U budspencer_cursors "\033]12;#$budspencer_colors[10]\007" "\033]12;#$budspencer_colors[5]\007" "\033]12;#$budspencer_colors[8]\007" "\033]12;#$budspencer_colors[9]\007"
@@ -637,10 +649,24 @@ end
 ########################
 function __budspencer_prompt_virtual_env -d 'Return the current virtual env name or other custom environment information'
     if set -q VIRTUAL_ENV; or set -q budspencer_alt_environment
-        set_color -b $budspencer_colors[9]
-        echo -n ''
         if set -q VIRTUAL_ENV
-            echo -n ' '(basename "$VIRTUAL_ENV")' '
+            set i 1
+            for grad_fg in $my_prompt_venv_grad1_fg
+                set_color -b $my_prompt_venv_grad1_bg[$i]
+                set_color -o $grad_fg
+                echo -n -e "$my_prompt_venv_grad1_symbol[$i]"
+                set i (math $i + 1)
+            end
+            set_color -b $my_prompt_venv_bg
+            set_color -o $my_prompt_venv_fg
+            echo -n (basename "$VIRTUAL_ENV")
+            set i 1
+            for grad_fg in $my_prompt_venv_grad2_fg
+                set_color -b $my_prompt_venv_grad2_bg[$i]
+                set_color -o $grad_fg
+                echo -n -e "$my_prompt_venv_grad2_symbol[$i]"
+                set i (math $i + 1)
+            end
         end
         if set -q budspencer_alt_environment
             echo -n ' '(eval "$budspencer_alt_environment")' '
