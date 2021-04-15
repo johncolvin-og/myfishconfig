@@ -1,28 +1,34 @@
-#!/usr/bin/env fish
+function fish_user_key_bindings
+    # ctrl+key
+    bind -M insert \cn down-or-search
+    bind -M insert \cp up-or-search
+    bind -M insert \cj down-or-search
+    bind -M insert \ck up-or-search
+    bind -M insert \ch backward-char
+    bind -M insert \cl forward-char
+    # ctrl+alt h
+    bind -M insert \e\b backward-word
+    # ctrl+alt l
+    bind -M insert \e\f forward-word
+end
 
-source /home/john/.config/fish/aliases.fish
-# make less more friendly for non-text input files, see lesspipe(1)
-# [ -x /usr/bin/lesspipe ] && eval '(SHELL=/bin/sh lesspipe)'
-# enable general colors in 'less'
-set -x LESS "$LESS -R -Q"
-# enable syntax highlighting in 'less' 
-set -x LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# builtin bindings: left
+# bind --preset -M insert \e\[C backward-char
+# bind --preset \e\[C backward-char
+# bind --preset -M visual \e\[C backward-char
 
-set -x XDG_CONFIG_HOME $HOME"/.config"
-fish_vi_key_bindings
-#set fish_color_cwd A25AE2
-set fish_color_cwd B27AFF
+# builtin bindings: ctrl+left
+# bind --preset -M insert \e\e\[C prevd-or-backward-word
+# bind --preset \e\e\[C prevd-or-backward-word
+# bind --preset -M visual \e\e\[C prevd-or-forward-word
 
-#bind \cy accept-autosuggestion
-#bind \t forward-word
-bind -M insert \cn down-or-search
-bind -M insert \cp up-or-search
-bind -M insert \cj down-or-search
-bind -M insert \ck up-or-search
-bind -M insert \cl forward-char
-bind -M insert \ch backward-char
-bind -M insert \cH backward-bigword
-set -x LS_COLORS "$LS_COLORS:di=38;5;141;48;5;234:fi=94:*.h=38;5;039:*.cpp=38;5;024:*.py=38;5;041:*.txt=38;5;251"
-bind -M default \cv 'set fish_bind_mode default'
-bind -M default \e 'set fish_bind_mode default'
+# builtin bindings: right
+# bind --preset -M insert \e\[C forward-char
+# bind --preset \e\[C forward-char
+# bind --preset -M visual \e\[C forward-char
+
+# builtin bindings: ctrl+right
+# bind --preset -M insert \e\e\[C nextd-or-forward-word
+# bind --preset \e\e\[C nextd-or-forward-word
+# bind --preset -M visual \e\e\[C nextd-or-forward-word
 
