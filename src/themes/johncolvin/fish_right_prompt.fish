@@ -150,7 +150,7 @@ function __budspencer_prompt_git_symbols -d 'Displays the git symbols'
           end
           if [ $git_status[3] -gt 0 ]
             set_color -o $budspencer_colors[10]
-            echo -n ' ✱'
+            echo -n ' ✱ '
           end
           if [ $git_status[4] -gt 0 ]
             set_color -o $budspencer_colors[8]
@@ -166,7 +166,7 @@ function __budspencer_prompt_git_symbols -d 'Displays the git symbols'
           end
           if [ $git_stashed -gt 0 ]
             set_color -o $budspencer_colors[11]
-            echo -n ' ✭'
+            echo -n ' ✭ '
           end
         else
           if [ $git_ahead_behind[1] -gt 0 ]
