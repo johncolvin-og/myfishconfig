@@ -24,7 +24,7 @@ set -g budspencer_pwdstyle git none none
 set -g budspencer_display_user
 
 source $fish_config_home/functions/budspencer_profiles.fish
-set_profile_pastel_titan
+set_profile_titan
 
 # Custom environment variables
 set -g REPOS_HOME $HOME/Documents/repos 
