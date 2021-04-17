@@ -22,9 +22,6 @@ function set_profile_pastel_titan
    set -U my_prompt_right_symbols_fg $my_pastel_blue
    set -U my_prompt_right_grad1_symbol '' '' ''
    set_prompt_bg $my_dark_gray
-   # set -U my_prompt_grad1_bg[1] $my_dark_gray2
-   # set -U my_prompt_grad1_bg[2] $my_semi_dark_gray
-   # set -U my_prompt_grad1_bg[3] $my_semi_dark_gray2
    set -U my_prompt_wd_bg $my_dark_gray2
 end
 

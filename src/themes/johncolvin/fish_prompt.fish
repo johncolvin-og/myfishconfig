@@ -939,8 +939,6 @@ function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the
   set_color -o $my_prompt_host_fg
   echo -n (hostname -s)
 
-  # set_color -o $my_prompt_grad1_fg[1]
-  # set_color -b $my_prompt_grad1_bg[1]
   echo -n ' '
   set i 1
   for grad_fg in $my_prompt_grad1_fg
@@ -954,8 +952,6 @@ function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the
   echo -n ' '
   set_color -o $my_prompt_wd_fg
 
-  #  set_color -b $my_dark_gray
-  #  set_color -b $budspencer_current_bindmode_color $budspencer_colors[1]
   if [ (count $budspencer_prompt_error) != 1 ]
       switch $left_pwd_style
           case short
@@ -970,45 +966,6 @@ function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the
   set_color normal
   set_color $budspencer_colors[3]
 end
-
-# # black dark_gray light_gray white yellow orange red magenta violet blue cyan green
-# function __budspencer_pwd -d 'My twist on budspencer\'s working dir (but for the left prompt)'
-#     set_color -b $budspencer_colors[2]
-#    #  set_color -b $my_dark_gray
-#     set_color -o $budspencer[6]
-#    #  set_color $my_gray
-#     echo -n $USER
-#     set_color $budspencer[3]
-#     set_color CCCC00
-#     echo -n '@'
-#     set_color $my_pastel_purple
-#     set_color $budspencer[4]
-#     echo -n (hostname -s)
-#    #  set_color -b $my_dark_gray
-#    #  set_color -o 8254CC
-#    #  echo -n ''
-#     set_color -o $my_semi_dark_gray 
-#     echo -n ''
-#     set_color -o 666666
-#     echo -n ''
-#     set_color -o 9E9E9E
-#     echo -n ' '
-#     set_color $my_off_white
-#    #  set_color -b $budspencer_current_bindmode_color $budspencer_colors[1]
-#     if [ (count $budspencer_prompt_error) != 1 ]
-#         switch $left_pwd_style
-#             case short
-#                 echo -n (prompt_pwd)' '
-#             case long
-#                 echo -n (pwd)' '
-#         end
-#     else
-#         echo -n " $budspencer_prompt_error "
-#         set -e budspencer_prompt_error[1]
-#     end
-#     set_color normal
-#     set_color $budspencer_colors[3]
-# end
 
 function fish_prompt -d 'Write out the left prompt of the budspencer theme'
     set -g last_status $status
