@@ -23,7 +23,7 @@ set -g left_pwd_style short
 set -g budspencer_pwdstyle git none none
 set -g budspencer_display_user
 
-source $fish_config_home/functions/budspencer_profiles.fish
+source $fish_config_home/functions/johncolvin_profiles.fish
 set_profile_titan
 
 # Custom environment variables
