@@ -38,8 +38,7 @@ if not test (uname) = Darwin
     end
 end
 
-source (realpath (dirname (status -f)))"/agnoster_fish_right_prompt.fish"
-source (realpath (dirname (status -f)))"/batman_fish_right_prompt.fish"
+source (realpath (dirname (status -f)))"/functions/__fish_cursor_name_to_code.fish"
 source (realpath (dirname (status -f)))"/functions/__budspencer_prompt_git_branch_right.fish"
 source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_ahead_or_behind.fish"
 source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_stashed.fish"
@@ -210,6 +209,40 @@ end
 ###############################################################################
 # => Prompt
 ###############################################################################
+
+set -q color_vi_mode_indicator; or set color_vi_mode_indicator black
+set -q color_vi_mode_normal; or set color_vi_mode_normal green
+set -q color_vi_mode_insert; or set color_vi_mode_insert blue 
+set -q color_vi_mode_visual; or set color_vi_mode_visual red
+
+# ===========================
+# Cursor setting
+
+# You can set these variables in config.fish like:
+# set -g cursor_vi_mode_insert bar_blinking
+# ===========================
+set -q cursor_vi_mode_normal; or set cursor_vi_mode_normal box_steady
+set -q cursor_vi_mode_insert; or set cursor_vi_mode_insert bar_steady
+set -q cursor_vi_mode_visual; or set cursor_vi_mode_visual box_steady
+
+function prompt_vi_mode -d 'vi mode status indicator'
+  set -l right_segment_separator \uE0B2
+  switch $fish_bind_mode
+      case default
+        set -l mode (__fish_cursor_name_to_code $cursor_vi_mode_normal)
+        echo -e "\e[\x3$mode q"
+        set_color $color_vi_mode_normal
+      case insert
+        set -l mode (__fish_cursor_name_to_code $cursor_vi_mode_insert)
+        echo -e "\e[\x3$mode q"
+        set_color $color_vi_mode_insert
+      case visual
+        set -l mode (__fish_cursor_name_to_code $cursor_vi_mode_visual)
+        echo -e "\e[\x3$mode q"
+        set_color $color_vi_mode_visual
+    end
+end
+
 
 function fish_right_prompt -d 'Write out the right prompt of the budspencer theme'
     echo -n -s (__budspencer_cmd_duration) (__budspencer_prompt_git_symbols)
