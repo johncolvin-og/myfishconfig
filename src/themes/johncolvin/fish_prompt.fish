@@ -741,7 +741,7 @@ function __budspencer_prompt_left_symbols -d 'Display symbols'
             set symbols_urgent T
         end
         if contains $PWD $bookmarks
-            set symbols $symbols(set_color -o $budspencer_colors[10])' ⌘'
+            set symbols $symbols(set_color -o $budspencer_colors[10])' ⌘ '
         end
         if set -q -x VIM
             set symbols $symbols(set_color -o $budspencer_colors[9])' V'
