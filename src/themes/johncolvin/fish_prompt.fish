@@ -63,6 +63,7 @@ set -U my_pastel_purple B27AFF
 set -U my_semi_light_purple B27AFF
 set -U my_semi_light_orchid A25AE20
 
+set -U my_crimson DD2244
 set -U my_orange FF8822
 set -U my_dirty_orange AA7744
 set -U my_dark_peach AA5744
@@ -70,6 +71,7 @@ set -U my_dark_oranage BB6C00
 set -U my_gold FFAA55
 
 set -U my_olive_tan 996C33
+set -U my_deep_royal_blue 223388
 set -U my_mud_brown 795C26
 set -U my_dry_mud_brown 7E6036
 set -U my_yellow_tan A28238
