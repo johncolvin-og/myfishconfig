@@ -63,11 +63,7 @@ function prompt_vi_mode -d 'vi mode status indicator'
     end
 end
 
-source (realpath (dirname (status -f)))"/functions/__batman_color_dim.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_fst.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_off.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_snd.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_trd.fish"
+source (realpath (dirname (status -f)))"/colors/batman_colors.fish"
 
 function git::is_stashed
   command git rev-parse --verify --quiet refs/stash >/dev/null

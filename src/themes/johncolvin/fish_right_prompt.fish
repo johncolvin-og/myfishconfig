@@ -45,11 +45,7 @@ source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_ahead_or_
 source (realpath (dirname (status -f)))"/functions/__budspencer_is_git_stashed.fish"
 source (realpath (dirname (status -f)))"/functions/__budspencer_git_status.fish"
 
-source (realpath (dirname (status -f)))"/functions/__batman_color_dim.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_fst.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_off.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_snd.fish"
-source (realpath (dirname (status -f)))"/functions/__batman_color_trd.fish"
+source (realpath (dirname (status -f)))"/colors/batman_colors.fish"
 ###############################################################################
 # => Functions
 ###############################################################################
