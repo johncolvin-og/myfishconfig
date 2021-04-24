@@ -88,18 +88,6 @@ if not set -q budspencer_colors
     set -U budspencer_colors $budspencer_night
 end
 
-# Prompt specific default colors (custom)
-# set -U my_prompt_venv_bg $budspencer_colors[9]
-set -U my_prompt_venv_bg $my_dark_gray
-set -U my_prompt_venv_grad1_fg $my_pastel_blue
-set -U my_prompt_venv_grad1_bg $my_dark_gray
-set -U my_prompt_venv_fg $my_pale_green
-set -U my_prompt_venv_grad1_symbol ''
-
-set -U my_prompt_venv_grad2_fg $my_pastel_blue
-set -U my_prompt_venv_grad2_bg $my_dark_gray
-set -U my_prompt_venv_grad2_symbol '\e[3m\e[23m '
-
 # Cursor color changes according to vi-mode
 # Define values for: normal_mode insert_mode visual_mode
 set -U budspencer_cursors "\033]12;#$budspencer_colors[10]\007" "\033]12;#$budspencer_colors[5]\007" "\033]12;#$budspencer_colors[8]\007" "\033]12;#$budspencer_colors[9]\007"
