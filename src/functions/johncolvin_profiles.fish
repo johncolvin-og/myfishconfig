@@ -10,6 +10,21 @@ function set_prompt_bg
    set -U my_prompt_right_grad1_bg $argv[1] $argv[1] $argv[1]
 end
 
+function set_profile_default
+   set -U my_prompt_user_fg $my_gray
+   set -U my_prompt_at_fg $my_hotdog_mustard_yellow
+   set -U my_prompt_host_fg $my_pastel_purple
+   set -U my_prompt_wd_fg $my_pea_green
+   set -U my_prompt_grad1_fg $my_semi_dark_gray $my_gray $my_semi_light_gray
+   set -U my_prompt_symbols_fg $my_pea_green
+   set -U my_prompt_grad1_symbol '' '' ' '
+   set -U my_prompt_right_grad1_fg $my_semi_dark_gray $my_gray $my_semi_light_gray
+   set -U my_prompt_right_symbols_fg $my_pastel_blue
+   set -U my_prompt_right_grad1_symbol '' '' ''
+   set_prompt_bg $my_dark_gray
+   set -U my_prompt_wd_bg $my_dark_gray2
+end
+
 function set_profile_titan
    set -U my_prompt_user_fg $my_gray
    set -U my_prompt_at_fg $my_hotdog_mustard_yellow
