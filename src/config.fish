@@ -9,6 +9,10 @@ set -x LC_ALL en_US.UTF-8
 # enable syntax highlighting in 'less'
 set -x LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
+if test $TERM = 'xterm'
+   set -g TERM 'xterm-256color'
+end
+
 fish_vi_key_bindings
 
 set -g display_hostname
