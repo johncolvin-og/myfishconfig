@@ -37,10 +37,12 @@ set -g REPOS_PRIVATE $REPOS_HOME/private
 set -g CONFIG_FISH $XDG_CONFIG_HOME/fish
 set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
-set PATH $PATH /home/john/.tools
+set PATH $PATH /home/$USER/.tools
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-eval /home/john/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# <<< conda initialize <<<
-
+set maybe_conda_path /home/$USER/anaconda3/bin/conda
+if test -e $maybe_conda_path
+   # >>> conda initialize >>>
+   # !! Contents within this block are managed by 'conda init' !!
+   eval $maybe_conda_path "shell.fish" "hook" $argv | source
+   # <<< conda initialize <<<
+end
