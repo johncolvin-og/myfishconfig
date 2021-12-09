@@ -40,8 +40,18 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
 set PATH $PATH /home/$USER/.tools
 
-set maybe_conda_path /home/$USER/anaconda3/bin/conda
-if test -e $maybe_conda_path
+function get_existing_path -d "Echos a path if it exists, otherwise returns 1"
+    if test -f $argv[1]
+        echo $argv[1]
+    else
+        return 1
+    end
+end
+
+set maybe_conda_path (which conda; or\
+    get_existing_path "/home/$USER/anaconda3/condabin/conda"; or\
+    get_existing_path "/home/$USER/anaconda3/bin/conda")
+if test $status = 0; and test -f $maybe_conda_path
    # >>> conda initialize >>>
    # !! Contents within this block are managed by 'conda init' !!
    eval $maybe_conda_path "shell.fish" "hook" $argv | source
