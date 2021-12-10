@@ -61,7 +61,7 @@ set -U my_pastel_blue 5084FF
 set -U my_baby_blue 77B1FF
 set -U my_pastel_purple B27AFF
 set -U my_semi_light_purple B27AFF
-set -U my_semi_light_orchid A25AE20
+set -U my_semi_light_orchid A25AE2
 
 set -U my_crimson DD2244
 set -U my_orange FF8822
