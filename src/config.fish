@@ -11,7 +11,7 @@ set -x LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 
 set -q TERM
 if test $status != 0; or test $TERM = 'xterm'
-   set -g TERM 'xterm-256color'
+    set -g TERM 'xterm-256color'
 end
 
 fish_vi_key_bindings
@@ -52,8 +52,8 @@ set maybe_conda_path (which conda; or\
     get_existing_path "/home/$USER/anaconda3/condabin/conda"; or\
     get_existing_path "/home/$USER/anaconda3/bin/conda")
 if test $status = 0; and test -f $maybe_conda_path
-   # >>> conda initialize >>>
-   # !! Contents within this block are managed by 'conda init' !!
-   eval $maybe_conda_path "shell.fish" "hook" $argv | source
-   # <<< conda initialize <<<
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    eval $maybe_conda_path "shell.fish" "hook" $argv | source
+    # <<< conda initialize <<<
 end
