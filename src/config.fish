@@ -3,8 +3,8 @@
 set -x XDG_CONFIG_HOME $HOME/.config
 set fish_config_home $XDG_CONFIG_HOME/fish
 source $fish_config_home/aliases.fish
-# enable general colors in 'less'
-set -x LESS "$LESS -R -Q"
+# enable general colors and case insensitive search in 'less'
+set -x LESS "$LESS -R -Q -I"
 set -x LC_ALL en_US.UTF-8
 # enable syntax highlighting in 'less'
 set -x LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
