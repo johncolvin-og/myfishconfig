@@ -8,6 +8,10 @@ set -x LESS "$LESS -R -Q"
 set -x LC_ALL en_US.UTF-8
 # enable syntax highlighting in 'less'
 set -x LESSOPEN "| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+# set highlight color scheme in 'less' (fg)(bg)
+set -g LESS_TERMCAP_md (tput bold)(tput setaf 36)
+set -g LESS_TERMCAP_me (tput sgr0)
+set -g LESS_TERMCAP_so (tput setaf 232)(tput setab 49)
 
 set -q TERM
 if test $status != 0; or test $TERM = 'xterm'
