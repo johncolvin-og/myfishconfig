@@ -20,6 +20,9 @@ end
 
 fish_vi_key_bindings
 
+# Fix impossible-to-see navy blue command text color
+set fish_color_command F8F8F2
+
 set -g display_hostname
 set -g display_user
 set -g theme_color_scheme dark
