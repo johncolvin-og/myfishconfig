@@ -55,6 +55,16 @@ function get_existing_path -d "Echos a path if it exists, otherwise returns 1"
     end
 end
 
+function try_append_to_path -d "Appends a path to the PATH variable if it exists"
+   if test -e $argv[1]
+      set PATH $PATH $argv[1]
+   end
+end
+
+try_append_to_path /home/$USER/.tools
+try_append_to_path /home/$USER/go/bin
+
+
 set maybe_conda_path (which conda; or\
     get_existing_path "/home/$USER/anaconda3/condabin/conda"; or\
     get_existing_path "/home/$USER/anaconda3/bin/conda")
