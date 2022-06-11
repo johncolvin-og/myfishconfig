@@ -39,9 +39,9 @@ source $fish_config_home/functions/johncolvin_profiles.fish
 set_profile_titan
 
 # Custom environment variables
-set -g REPOS_HOME $HOME/Documents/repos 
-set -g REPOS_PUBLIC $REPOS_HOME/public
-set -g REPOS_PRIVATE $REPOS_HOME/private
+set -g REPOS $HOME/Documents/repos
+set -g REPOS_PUBLIC $REPOS/public
+set -g REPOS_PRIVATE $REPOS/private
 set -g CONFIG_FISH $XDG_CONFIG_HOME/fish
 set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
