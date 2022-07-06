@@ -28,6 +28,14 @@ function ldfa
    ls --group-directories-first -lhsaF $argv
 end
 
+function tarz
+    tar -czf "$argv[1].tar.gz" $argv[1]
+end
+
+function taru
+    tar -xf $argv[1]
+end
+
 function tmux
    command tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf $argv
    set -g TERM xterm-256color
