@@ -1,5 +1,9 @@
 #!/usr/bin/env fish
 
+function grepi
+    grep -rnHIi $argv
+end
+
 function lessq
    less --quit-if-one-screen $argv
 end
