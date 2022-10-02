@@ -47,14 +47,6 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
 set PATH $PATH /home/$USER/.tools
 
-function get_existing_path -d "Echos a path if it exists, otherwise returns 1"
-    if test -f $argv[1]
-        echo $argv[1]
-    else
-        return 1
-    end
-end
-
 function try_append_to_path -d "Appends a path to the PATH variable if it exists"
    if test -e $argv[1]
       set PATH $PATH $argv[1]
@@ -66,8 +58,8 @@ try_append_to_path /home/$USER/go/bin
 
 
 set maybe_conda_path (which conda; or\
-    get_existing_path "/home/$USER/anaconda3/condabin/conda"; or\
-    get_existing_path "/home/$USER/anaconda3/bin/conda")
+    get-existing-path "/home/$USER/anaconda3/condabin/conda"; or\
+    get-existing-path "/home/$USER/anaconda3/bin/conda")
 if test $status = 0; and test -f $maybe_conda_path
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
