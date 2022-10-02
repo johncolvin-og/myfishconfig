@@ -47,15 +47,12 @@ set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
 set PATH $PATH /home/$USER/.tools
 
-function try_append_to_path -d "Appends a path to the PATH variable if it exists"
-   if test -e $argv[1]
-      set PATH $PATH $argv[1]
-   end
-end
+source $fish_config_home/functions/append-to-path.fish
+append-to-path /home/$USER/.tools
+append-to-path /home/$USER/go/bin
 
-try_append_to_path /home/$USER/.tools
-try_append_to_path /home/$USER/go/bin
 
+source $fish_config_home/functions/get-existing-path.fish
 
 set maybe_conda_path (which conda; or\
     get-existing-path "/home/$USER/anaconda3/condabin/conda"; or\
