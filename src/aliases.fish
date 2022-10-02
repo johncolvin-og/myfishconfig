@@ -45,6 +45,10 @@ function tmux
    set -g TERM xterm-256color
 end
 
+function whichdir -d "Show the directory of an executable in PATH"
+   dirname (readlink -f (which $argv))
+end
+
 # TODO: translate this alias to a function (command substitution in fish works
 # differently, I think the $ and " chars are interpretted differently
 # alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
