@@ -36,6 +36,15 @@ function ldfa -d "list dirs then files w/ hidden (sort name, detailed)"
    ls --group-directories-first -lhsAF $argv
 end
 
+function pls -d "List processes that match a search string"
+    set procs (pgrep -f $argv) (echo $status)
+    if test $procs[-1] -ne 0
+        # procs cmd failed (exit code was non-zero)
+        return $procs[-1]
+    end
+    ps $procs[1..-2]
+end
+
 function tarz "Archive file(s) into a tar.gz file"
     tar -czf "$argv[1].tar.gz" $argv[1]
 end
