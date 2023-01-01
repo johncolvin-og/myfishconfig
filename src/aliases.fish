@@ -8,7 +8,7 @@ function grepic -d "grep w/ common flags and colored output"
     grep -rnHIi --color=always $argv
 end
 
-function lessq
+function lessq -d "less pager fit to screen"
    less --quit-if-one-screen $argv
 end
 
