@@ -32,11 +32,11 @@ function ldfa -d "list dirs then files w/ hidden (sort name, detailed)"
    ls --group-directories-first -lhsaF $argv
 end
 
-function tarz
+function tarz "Archive file(s) into a tar.gz file"
     tar -czf "$argv[1].tar.gz" $argv[1]
 end
 
-function taru
+function taru "Extract file(s) from a tar.gz file"
     tar -xf $argv[1]
 end
 
