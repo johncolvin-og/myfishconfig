@@ -33,7 +33,7 @@ function ldf "list dirs then files (sort name, detailed)"
 end
 
 function ldfa -d "list dirs then files w/ hidden (sort name, detailed)"
-   ls --group-directories-first -lhsaF $argv
+   ls --group-directories-first -lhsAF $argv
 end
 
 function tarz "Archive file(s) into a tar.gz file"
