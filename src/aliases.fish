@@ -8,27 +8,27 @@ function lessq
    less --quit-if-one-screen $argv
 end
 
-function l
+function l -d "list dirs then files"
    ls --group-directories-first -CF $argv
 end
 
-function ll
+function ll -d "list dirs and files (detailed)"
    ls -lhF $argv
 end
 
-function la
+function la "list dirs and files w/ hidden (detailed)"
    ls -Ah $argv
 end
 
-function lt
+function lt "list dirs and files detailed (sort time)"
    ls -lhtF $argv
 end
 
-function ldf
+function ldf "list dirs then files (sort name, detailed)"
    ls --group-directories-first -lhsF $argv
 end
 
-function ldfa
+function ldfa -d "list dirs then files w/ hidden (sort name, detailed)"
    ls --group-directories-first -lhsaF $argv
 end
 
