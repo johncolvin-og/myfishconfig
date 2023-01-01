@@ -1,7 +1,11 @@
 #!/usr/bin/env fish
 
-function grepi
+function grepi -d "grep w/ common flags"
     grep -rnHIi $argv
+end
+
+function grepic -d "grep w/ common flags and colored output"
+    grep -rnHIi --color=always $argv
 end
 
 function lessq
