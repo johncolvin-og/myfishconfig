@@ -20,15 +20,15 @@ function ll -d "list dirs and files (detailed)"
    ls -lhF $argv
 end
 
-function la "list dirs and files w/ hidden (detailed)"
+function la -d "list dirs and files w/ hidden (detailed)"
    ls -Ah $argv
 end
 
-function lt "list dirs and files detailed (sort time)"
+function lt -d "list dirs and files detailed (sort time)"
    ls -lhtF $argv
 end
 
-function ldf "list dirs then files (sort name, detailed)"
+function ldf -d "list dirs then files (sort name, detailed)"
    ls --group-directories-first -lhsF $argv
 end
 
@@ -45,11 +45,11 @@ function pls -d "List processes that match a search string"
     ps $procs[1..-2]
 end
 
-function tarz "Archive file(s) into a tar.gz file"
+function tarz -d "Archive file(s) into a tar.gz file"
     tar -czf "$argv[1].tar.gz" $argv[1]
 end
 
-function taru "Extract file(s) from a tar.gz file"
+function taru -d "Extract file(s) from a tar.gz file"
     tar -xf $argv[1]
 end
 
