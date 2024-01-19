@@ -5,7 +5,11 @@ if not set -q XDG_CONFIG_HOME
 end
 
 set fish_config_home $XDG_CONFIG_HOME/fish
-source $fish_config_home/aliases.fish
+
+if test -e $fish_config_home/aliases.fish
+    source $fish_config_home/aliases.fish
+end
+
 # enable general colors and case insensitive search in 'less'
 set -x LESS "$LESS -R -Q -I"
 set -x LC_ALL en_US.UTF-8
