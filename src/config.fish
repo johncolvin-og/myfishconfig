@@ -1,6 +1,9 @@
 #!/usr/bin/env fish
 
-set -x XDG_CONFIG_HOME $HOME/.config
+if not set -q XDG_CONFIG_HOME
+    set -x XDG_CONFIG_HOME $HOME/.config
+end
+
 set fish_config_home $XDG_CONFIG_HOME/fish
 source $fish_config_home/aliases.fish
 # enable general colors and case insensitive search in 'less'
