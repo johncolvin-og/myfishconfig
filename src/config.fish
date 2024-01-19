@@ -48,8 +48,6 @@ set_profile_titan
 set -g REPOS $HOME/Documents/repos
 set -g VIRTUAL_ENV_DISABLE_PROMPT true
 
-set PATH $PATH /home/$USER/.tools
-
 source $fish_config_home/functions/append-to-path.fish
 append-to-path /home/$USER/.tools
 append-to-path /home/$USER/go/bin
