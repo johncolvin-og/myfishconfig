@@ -1,14 +1,17 @@
 #!/usr/bin/env fish
 
+function _try_source --description "Runs 'source' on file if it exists"
+    if test -e $argv[1]
+        source $argv
+    end
+end
+
 if not set -q XDG_CONFIG_HOME
     set -x XDG_CONFIG_HOME $HOME/.config
 end
 
 set fish_config_home $XDG_CONFIG_HOME/fish
-
-if test -e $fish_config_home/aliases.fish
-    source $fish_config_home/aliases.fish
-end
+_try_source $fish_config_home/aliases.fish
 
 # enable general colors and case insensitive search in 'less'
 set -x LESS "$LESS -R -Q -I"
