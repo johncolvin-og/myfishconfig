@@ -58,6 +58,12 @@ function whichdir -d "Show the directory of an executable in PATH"
    dirname (readlink -f (which $argv))
 end
 
+function gvimdiffmax -d "Open maximized gvimdiff bc git difftool w/ gvimdiff
+   is an idiot and the LOCAL file (stored in /tmp dir) is deleted, running ls
+   revealed only the .LOCAL.swp file still exists"
+   gvimdiff -geometry 500x500 $argv
+end
+
 # TODO: translate this alias to a function (command substitution in fish works
 # differently, I think the $ and " chars are interpretted differently
 # alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
