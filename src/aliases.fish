@@ -20,10 +20,6 @@ function ll -d "list dirs and files (detailed)"
    ls -lhF $argv
 end
 
-function la -d "list dirs and files w/ hidden (detailed)"
-   ls -Ah $argv
-end
-
 function lt -d "list dirs and files detailed (sort time)"
    ls -lhtF $argv
 end
