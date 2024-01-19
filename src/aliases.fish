@@ -12,8 +12,9 @@ function lessq -d "less pager fit to screen"
    less --quit-if-one-screen $argv
 end
 
-function l -d "list dirs then files"
-   ls --group-directories-first -CF $argv
+function l --description "List contents of directory using long format"
+   ls -lh $argv
+end
 end
 
 function ll -d "list dirs and files (detailed)"
