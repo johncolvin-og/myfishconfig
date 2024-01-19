@@ -32,14 +32,6 @@ function lt -d "list dirs and files detailed (sort time)"
    ls -lhtF $argv
 end
 
-function ldf -d "list dirs then files (sort name, detailed)"
-   ls --group-directories-first -lhsF $argv
-end
-
-function ldfa -d "list dirs then files w/ hidden (sort name, detailed)"
-   ls --group-directories-first -lhsAF $argv
-end
-
 function pls -d "List processes that match a search string"
     set procs (pgrep -f $argv) (echo $status)
     if test $procs[-1] -ne 0
