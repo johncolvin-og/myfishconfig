@@ -43,24 +43,26 @@ set -g theme_powerline_fonts no
 set -g left_pwd_style short
 set -g budspencer_pwdstyle git none none
 set -g budspencer_display_user
-
-source $fish_config_home/functions/johncolvin_profiles.fish
-set_profile_titan
-
 # Custom environment variables
 set -g REPOS $HOME/Documents/repos
 
-source $fish_config_home/functions/append-to-path.fish
-append-to-path /home/$USER/.tools
-append-to-path /home/$USER/go/bin
+if _try_source $fish_config_home/functions/johncolvin_profiles.fish
+    set_profile_titan
+end
 
+if _try_source $fish_config_home/functions/append-to-path.fish
+    append-to-path /home/$USER/.tools
+    append-to-path /home/$USER/go/bin
+end
 
-source $fish_config_home/functions/get-existing-path.fish
+set maybe_conda_path (which conda)
+if test $status -ne 0; and _try_source $fish_config_home/functions/get-existing-path.fish
+    set maybe_conda_path (which conda; or\
+        get-existing-path "/home/$USER/anaconda3/condabin/conda"; or\
+        get-existing-path "/home/$USER/anaconda3/bin/conda")
+end
 
-set maybe_conda_path (which conda; or\
-    get-existing-path "/home/$USER/anaconda3/condabin/conda"; or\
-    get-existing-path "/home/$USER/anaconda3/bin/conda")
-if test $status = 0; and test -f $maybe_conda_path
+if test -f "$maybe_conda_path"
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
     eval $maybe_conda_path "shell.fish" "hook" $argv | source
