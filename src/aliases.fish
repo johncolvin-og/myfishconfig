@@ -8,6 +8,10 @@ function grepic -d "grep w/ common flags and colored output"
     grep -rnHIi --color=always $argv
 end
 
+function grepicl --description "grep w/ common flags and colored output (piped to 'less')"
+    grep -rnHIi --color=always $argv | less +F
+end
+
 function lessq -d "less pager fit to screen"
    less --quit-if-one-screen $argv
 end
@@ -15,6 +19,9 @@ end
 function l --description "List contents of directory using long format"
    ls -lh $argv
 end
+
+function ld --description "List contents of directory using long format (group directories first)"
+   ls -lh --group-directories-first $argv
 end
 
 function ll -d "list dirs and files (detailed)"
